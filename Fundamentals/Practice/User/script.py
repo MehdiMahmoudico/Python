@@ -13,15 +13,16 @@ class User:
         if self.is_rewards_member : 
             print("User already a member")
             return False
-        self.is_rewards_member = True
-        self.gold_card_points = 200 
-        print(f"{self.first_name},'\n' {self.last_name}, '\n' {self.email}, '\n' {self.age}, '\n' {self.is_rewards_member}, '\n' {self.gold_card_points}")
+        else :
+            self.is_rewards_member = True
+            self.gold_card_points = 200 
+            print(f"{self.first_name},'\n' {self.last_name}, '\n' {self.email}, '\n' {self.age}, '\n' {self.is_rewards_member}, '\n' {self.gold_card_points}")
+            return True
 
     def spend_points(self, amount):
         if self.gold_card_points < amount : 
             print("not enough")
-            return 
-        self.gold_card_points -= amount
+        else : self.gold_card_points -= amount
         print(f"user spend {amount} points")
 
 
@@ -30,11 +31,10 @@ class User:
 user1= User("Monji","Mahjoub","monji@dojo.com",25)
 user2= User("ali","Mahmoud","ali@dojo.com",25)
 user3= User("Mohsen","rjab","mohsen@dojo.com",25)
-
-# user1.spend_points(50)
-# user2.enroll()
-# user2.spend_points(80)
-# user1.display_info()
-# user2.display_info()
-# user3.display_info()
+user1.spend_points(50)
+user2.enroll()
+user2.spend_points(80)
+user1.display_info()
+user2.display_info()
+user3.display_info()
 user3.spend_points(40)
