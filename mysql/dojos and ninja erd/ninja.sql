@@ -1,0 +1,9 @@
+insert into ninjas (firstname , lastname , age , dojo_id) values ("Jhin" , "bing" , 26,1) , ("Rin" , "bing" , 26,1) , ("Jhin" , "ging" , 26,1) ;
+select * from ninjas;
+insert into ninjas (firstname , lastname , age , dojo_id) values ("Jhing" , "ring" , 29,2) , ("Bin" , "Zin" , 21,2) , ("Bom" , "Bam" , 36,2) ;
+insert into ninjas (firstname , lastname , age , dojo_id) values ("slum" , "shadu" , 49,3) , ("bis" , "Benn" , 11,3) , ("Eren" , "Yeager" , 23,3) ;
+select * from ninjas where dojo_id = 1 ;
+select * from ninjas where dojo_id = 3 ;
+SELECT * FROM ninjas ORDER BY Id DESC LIMIT 1;
+SELECT * FROM dojos join ninjas on dojos.id=ninjas.dojo_id where ninjas.id=6;
+select * from dojos join ninjas on dojos.id = ninjas.dojo_id ;
