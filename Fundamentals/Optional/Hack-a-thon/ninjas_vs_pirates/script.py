@@ -91,7 +91,6 @@ class Battle :
                 ninja.use_item()
             if random.random() < 0.5:
                 pirate.use_item()
-
             
             ninja.show_stats()
             pirate.show_stats()
@@ -114,3 +113,4 @@ michelangelo = Ninja("Michelanglo")
 jack_sparrow = Pirate("Jack Sparrow")
 
 Battle.start_battle(michelangelo,jack_sparrow)
+
