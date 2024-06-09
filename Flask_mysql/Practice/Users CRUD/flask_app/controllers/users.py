@@ -23,3 +23,24 @@ def delete(id):
     data = {"id":id}
     User.delete(data)
     return redirect ("/")
+@app.route("/users/<int:id>/update")
+def getbyid(id):
+    data = {"id":id}
+    user = User.get_by_id(data)
+    return render_template ("update.html",user=user)
+
+@app.route("/users/update",methods=["POST"])
+def update():
+    data = {
+        "id":request.form["id"],
+        "first_name":request.form["first_name"],
+        "last_name":request.form["last_name"],
+        "email":request.form["email"]}
+    User.update(data)
+    return redirect ("/")
+
+@app.route("/users/<int:id>/show")
+def show(id):
+    data = {"id":id}
+    user = User.get_by_id(data)
+    return render_template ("readone.html", user=user)

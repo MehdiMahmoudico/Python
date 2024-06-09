@@ -7,18 +7,19 @@
     <title>Document</title>
 </head>
 <body class="container" style="margin-top: 40px; width: 600px;">
-    <form action="/users" method="post">
+    <form action="/users/update" method="post">
+        <input type="hidden" name="id" value="{{user.id}}">
         <p class="h1 d-flex justify-content-center">Add User</p>
         <label for="exampleFormControlInput1" class="form-label" >First Name :</label>
-        <input class="form-control justify-content-center" type="text" required  name ="first_name">
+        <input class="form-control justify-content-center" type="text" required  name ="first_name" value="{{user.first_name}}">
         <label for="exampleFormControlInput1" class="form-label" >Last Name :</label>
-        <input class="form-control justify-content-center" type="text" required name="last_name">
+        <input class="form-control justify-content-center" type="text" required name="last_name" value="{{user.last_name}}">
         <div class="mb-3 ">
             <label for="exampleFormControlInput1" class="form-label">Email address</label>
-            <input type="email" class="form-control d-flex justify-content-center" placeholder="name@example.com" required name="email">
+            <input type="email" class="form-control d-flex justify-content-center" placeholder="name@example.com" required name="email" value="{{user.email}}">
         </div>
-        <button type="submit" class="btn btn-success">Add User</button>
-        <a href="/" class="btn btn-success">Home</a>
+        <button type="submit" class="btn btn-success">Update User</button>
+        <a href="/" class="btn btn-success">Home</a> &nbsp;
     </form>
 </body>     
 </html>
