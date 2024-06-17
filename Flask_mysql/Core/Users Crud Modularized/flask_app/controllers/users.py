@@ -1,6 +1,6 @@
 from flask_app import app
 
-from flask import render_template , redirect , request
+from flask import render_template , redirect , request , session
 
 from flask_app.models.user import User
 
@@ -9,10 +9,16 @@ def read():
     user = User.get_all()
     return render_template("readall.html",users=user)
 
+@app.route("/usersread")
+def readme():
+    return render_template ("create.html")
 @app.route("/users", methods=["POST"])
 def create():
-    User.create(request.form)
-    return redirect ("/")
+    data = request.form
+    if User.validate(data):
+        User.create(request.form)
+        return redirect ("/")
+    return redirect ("/usersread")
 
 @app.route("/newuser",methods=["POST"] )
 def createNew():
