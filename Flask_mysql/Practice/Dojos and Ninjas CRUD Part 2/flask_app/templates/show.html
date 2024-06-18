@@ -18,7 +18,7 @@
             </tr>
         </thead>
         <tbody>
-            {%for ninja in dojo.ninjas %}
+            {%for ninja in ninjas %}
                 {%if ninja.firstname != none :%}
                 <tr>
                     <th>{{ninja.firstname}}</th>
@@ -26,7 +26,7 @@
                     <th>{{ninja.age}}</th>
                     <th>
                         <a href="/ninja/{{ninja.id}}/update">edit</a>&nbsp;
-                        <a href="/delete/{{ninja.id}}/{{dojo.id}}/ninja">delete</a>
+                        <a href="/delete/{{ninja.id}}/{{ninja.dojo_id}}/ninja">delete</a>
                     </th>
                 </tr>
                 {%endif%}

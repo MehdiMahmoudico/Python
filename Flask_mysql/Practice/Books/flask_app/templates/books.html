@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Authors</title>
+</head>
+<body class="container">
+    <div class="d-flex">
+        <div class="container t mt-5">
+            <p class="h1 d-flex justify-content-star">New Books</p>
+            <form class="mt-5" action="/create_book" method="post">
+                <span class="input-group-text d-flex justify-content-star input-group mb-3" id="inputGroup-sizing-default" style="width: 70px; font-weight: bolder;">Title:</span>
+                <input type="text" class="form-control d-flex justify-content-star input-group mb-3" style="width: 300px;"aria-label="Sizing example input" 
+                aria-describedby="inputGroup-sizing-default" required name="title">
+                <span class="input-group-text d-flex justify-content-star input-group mb-3" id="inputGroup-sizing-default" style="width: 160px; font-weight: bolder;">Number of Pages:</span>
+                <input class="form-control justify-content-center" type="number" required name='num_of_pages'><br>
+                <button type="submit" class="btn btn-primary ">Create</button>
+            </form>
+        </div>
+        <div class="container t mt-5">
+            <p class="h1 d-flex justify-content-star">All Books</p>
+            <div class= "d-flex flex-column mb-3">
+                <div class="w-75 p-3 h-75 d-inline-block border border-black">
+                {% for book in books %}
+                    <a  class="d-flex justify-content-star mt-2" href="/book/{{book.id}}">{{book.title}}</a>
+                {% endfor %}
+                </div>
+                <a href="/" class="container t mt-5">Home </a>
+            </div>
+        </div>
+    </div>  
+
+</body>
+</html>

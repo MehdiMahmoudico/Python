@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Authors</title>
+</head>
+<body class="container">
+    <div class="d-flex">
+        <div class="container t mt-5">
+            <p class="h1 d-flex justify-content-star">Title: {{book.title}}</p>&nbsp;
+            <p class="h4 d-flex justify-content-star">Favorited by :</p>
+
+        </div>
+        <div class="container t mt-5">
+            <p class="h1 d-flex justify-content-star">Add Author's Favorite</p>&nbsp;
+            <div class= "d-flex flex-column mb-3">
+                <form action="/author/favorite" method="post">
+                    <select class="form-select" aria-label="Default select example">
+                        {% for user in authors%}
+                            <option value="{{user.id}}">{{user.fullname}}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit" class="btn btn-primary mt-5 " value="add book">Add</button>
+                </form>
+                <a href="/" class="container t mt-5">Home </a>
+            </div>
+        </div>
+    </div>  
+
+</body>
+</html>
