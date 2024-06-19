@@ -52,6 +52,13 @@
                   </div>
             <button type="submit" class="btn btn-success">Edit</button>
         </form>
+        {% with messages = get_flashed_messages(category_filter=['update']) %}     <!-- declare a variable called messages -->
+        {% if messages %}                            <!-- check if there are any messages -->
+                {% for message in messages %}            <!-- loop through the messages -->
+                <span class=" fontme badge rounded-pill text-bg-danger d-flex justify-content-evenly" style="font-size: 16px;">{{message}}</span><br>                  <!-- display each message in a paragraph tag -->
+                {% endfor %}               <!-- display each message in a paragraph tag -->
+        {% endif %}
+        {% endwith %}
     </main>
 </body>
 </html>

@@ -28,8 +28,10 @@ def create_receipe():
     if not 'userid' in session:
         return redirect('/')
     data = request.form
-    Receipe.create(data)
-    return redirect('/receipe')
+    if Receipe.receipe_validate1(data):
+        Receipe.create(data)
+        return redirect('/receipe')
+    return redirect('/receipe/new')
 
 @app.route('/receipe/<int:id>/delete')
 def delete_receipe(id):
@@ -54,10 +56,11 @@ def update_receipe():
     if not 'userid' in session:
         return redirect('/')
     data = request.form
-    Receipe.update(data)
-    return redirect('/receipe')
-
-
+    receipe = Receipe.get_one(data)
+    if Receipe.receipe_validate(data):
+        Receipe.update(data)
+        return redirect('/receipe')
+    return redirect(f'/receipe/{receipe.id}/edit')
 
 @app.route('/receipe/<int:id>/show')
 def show_receipe(id):

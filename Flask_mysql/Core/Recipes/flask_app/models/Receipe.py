@@ -1,7 +1,7 @@
 from flask_app.config.mysqlconnection import connectToMySQL , DB
 from flask_app.models.User import User
 from flask_app import app
-
+from flask import flash
 class Receipe : 
     def __init__(self,data):
         self.id = data['id']
@@ -12,7 +12,7 @@ class Receipe :
         self.under = data['under']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
- 
+
         self.user = None
 
 
@@ -70,4 +70,40 @@ class Receipe :
         query = "DELETE FROM recipes WHERE id = %(id)s;"
         results = connectToMySQL(DB).query_db(query,data)
         return results
+    
+
+    @classmethod
+    def receipe_validate(cls,data):
+        is_valid = True
+        if len(data['name']) < 3:
+            is_valid = False
+            flash("Name must be at least 3 characters",'update')
+        if len(data['description']) < 3:
+            is_valid = False
+            flash("Description must be at least 3 characters",'update')
+        if len(data['instructions']) < 3:
+            is_valid = False
+            flash("Instructions must be at least 3 characters",'update')
+        if data['date_made'] == "" :
+            is_valid = False
+            flash("Date made must not be empty",'update')
+        return is_valid
+    
+    
+    @classmethod
+    def receipe_validate1(cls,data):
+        is_valid = True
+        if len(data['name']) < 3:
+            is_valid = False
+            flash("Name must be at least 3 characters",'new')
+        if len(data['description']) < 3:
+            is_valid = False
+            flash("Description must be at least 3 characters",'new')
+        if len(data['instructions']) < 3:
+            is_valid = False
+            flash("Instructions must be at least 3 characters",'new')
+        if data['date_made'] == "" :
+            is_valid = False
+            flash("Date made must not be empty",'new')
+        return is_valid
     
